@@ -24,10 +24,10 @@ def go(args):
     # Drop outliers
     min_price = args.min_price
     max_price = args.max_price
-    print(df.shape[0])
     idx = df['price'].between(min_price, max_price, inclusive=True)
     df = df[idx].copy()
-    print(df.shape[0])
+    idx = df['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2)
+    df = df[idx].copy() 
     
     # create output artifact
     logger.info("Creating artifact")
